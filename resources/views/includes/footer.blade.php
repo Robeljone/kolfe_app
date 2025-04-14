@@ -42,11 +42,6 @@
             }
         }
 
-    }); 
-</script>
-<script>
-    $(document).ready(function () {
-        $('#myTable').DataTable();
     });
 </script>
 <script>
@@ -58,7 +53,7 @@
     }
 </script>
 <script>
-    $(document).ready(function() 
+    $(document).ready(function()
     {
     $('#dataTable').DataTable({
         dom: 'Bfrtip',
@@ -71,4 +66,5 @@
     })
 })
 </script>
+@yield('scripts')
 </html>
