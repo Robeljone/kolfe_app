@@ -1,0 +1,18 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ModuleController;
+
+Route::get('/', [UserController::class, 'login_pg'])->name('index');
+Route::get('/dashboard', [UserController::class, 'dash_pg']);
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/department', [UserController::class, 'department']);
+Route::get('/property', [UserController::class, 'index_property']);
+Route::get('/destination', [ModuleController::class, 'destination']);
+Route::get('/heritage', [ModuleController::class, 'heritage']);
+Route::get('/location', [ModuleController::class, 'index_location']);
+Route::get('/image', [ModuleController::class, 'index_image']);
+Route::fallback(function () {
+    return redirect()->route('index'); // or ->route('index') based on your route name
+});
