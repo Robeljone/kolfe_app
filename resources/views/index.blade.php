@@ -14,38 +14,33 @@
                     {{ session('error') }}
                 </div>
             @endif
-            <form method="POST" class="space-y-4">
+            <form id="loginfrm" class="space-y-4">
                 @csrf
-
                 <div>
                     <label for="uname" class="block mb-2 text-sm font-medium text-gray-700">User Name</label>
                     <input type="text" name="uname"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
                         required>
                 </div>
-
                 <div>
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
                     <input type="password" name="password" id="password"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
                         required>
                 </div>
-
                 <div class="flex items-center justify-between">
                     <label class="flex items-center text-sm text-gray-600">
                         &nbsp;
                     </label>
                     <a href="" class="text-sm text-blue-600 hover:underline">&nbsp;</a>
                 </div>
-
                 <button type="submit"
                     class="w-full text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     Login
                 </button>
             </form>
-
             <p class="text-sm mt-4 text-center">
-                KTA
+               Web Appication Back Office
             </p>
         </div>
     </div>
