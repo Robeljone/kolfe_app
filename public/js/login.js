@@ -6,6 +6,7 @@ $("#loginfrm").on("submit", function(event) {
         data: $("#loginfrm").serialize(),
         success: function (data) {
            console.log(data);
+           window.location.href ="/dashboard";
         },
         error: function (data) {
 			console.log(data);

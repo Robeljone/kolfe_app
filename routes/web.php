@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Middleware\CheckSession;
 
 Route::get('/', [UserController::class, 'login_pg'])->name('index');
 Route::get('/dashboard', [UserController::class, 'dash_pg']);
 Route::get('/user', [UserController::class, 'index']);
 Route::post('/login', [UserController::class, 'login']);
-Route::post('/logout', [UserController::class, 'logout']);
+Route::get('/logout', [UserController::class, 'logout']);
 Route::get('/department', [UserController::class, 'department']);
 Route::get('/property', [UserController::class, 'index_property']);
 Route::get('/destination', [ModuleController::class, 'destination']);
