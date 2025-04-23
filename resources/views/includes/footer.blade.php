@@ -66,5 +66,7 @@
     })
 })
 </script>
-@yield('scripts')
+@isset($script)
+    <script src="/js/{{$script}}"></script>
+@endisset
 </html>

@@ -5,20 +5,21 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
-class CheckSession
+class CheckUserSession
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $nsext): Response
     {
-        // if(!$request->session('is_true'))
+        // $is_true = $request->session()->get('is_true');
+        // if($is_true!="logged_in")
         // {
-        //     return redirect('/login');
+        //    return redirect('/');
         // }
         return $next($request);
     }

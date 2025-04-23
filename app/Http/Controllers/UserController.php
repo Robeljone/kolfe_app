@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Log;
 
@@ -20,9 +19,10 @@ class UserController extends Controller
     {
         return view('dashboard');
     }
-    public function index()
+    public function index(Request $request)
     {
-        return view('user');
+        $data = User::query()->where('status','!=',3)->get();
+        return view('user',['script'=>'user.js','data'=>$data]);
     }
 
     public function login(Request $request)
@@ -30,18 +30,17 @@ class UserController extends Controller
         try {
             $user = User::where('username', $request->uname)->first();
 
-            if (!$user || !Hash::check($request->password, $user->password)) {
+            if (!$user || !Hash::check($request->password, $user->password))
+            {
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Data Fetch Failed',
                     'data' => []
                 ], 500);
             } else {
-                Session::put('user_name', $user->name);
-                Session::put('user_role', $user->name);
-                Session::put('is_true', true);
+                $request->session()->put('user_id', $user->id);
                 return response()->json([
-                    'status' => 'success',
+                    'status' => 'Success',
                     'message' => 'Data stored',
                     'data' => $user
                 ], 200);
@@ -58,7 +57,7 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         try {
-            // $request->session()->flush();
+            $request->session()->flush();
             return redirect()->intended('/index');
 
         } catch (Exception $e) {
@@ -74,5 +73,31 @@ class UserController extends Controller
         return view('property');
     }
 
+    public function new_user(Request $request)
+    {
+      try{
+      $pass_hash = Hash::make($request->password);
+      User::query()->create([
+       'name'=>$request->fname,
+       'username'=>$request->uname,
+       'password'=>$pass_hash,
+       'role'=>$request->role,
+       'status'=>1
+      ]);
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Data Save Scuccess',
+        'data' => []
+    ], 200);
+      }catch(Exception $e)
+      {
+       Log::debug($e);
+       return response()->json([
+        'status' => 'error',
+        'message' => 'Data Save Failed',
+        'data' => $e
+    ], 500);
+      }
 
+    }
 }
