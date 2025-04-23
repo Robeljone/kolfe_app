@@ -3,7 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-
+use App\Http\Middleware\CheckUserSession;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
@@ -11,10 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // $middleware->use([
-        //     \Illuminate\Session\Middleware\StartSession::class,
-        //     \App\Http\Middleware\CheckUserSession::class
-        // ]);
+        $middleware->web(append: [
+            CheckUserSession::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

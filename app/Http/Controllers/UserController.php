@@ -44,7 +44,6 @@ class UserController extends Controller
                     'message' => 'Data stored',
                     'data' => $user
                 ], 200);
-                // return redirect()->intended('/dashboard');
             }
         } catch (Exception $e) {
             return response()->json([

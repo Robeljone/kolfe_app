@@ -14,13 +14,15 @@ class CheckUserSession
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $nsext): Response
+    public function handle(Request $request, Closure $next): Response
     {
-        // $is_true = $request->session()->get('is_true');
-        // if($is_true!="logged_in")
-        // {
-        //    return redirect('/');
-        // }
+        $data = $request->session()->all();
+
+        if($data['user_id']==null)
+        {
+            return redirect('/');
+        }
+
         return $next($request);
     }
 }
