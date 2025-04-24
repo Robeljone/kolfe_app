@@ -9,6 +9,12 @@
     <div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
         <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
             <h2 class="text-2xl font-bold text-center mb-6">Login to your account</h2>
+            <div id="success" class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 hidden" role="alert">
+                <span class="font-medium">Success!</span>Login
+            </div>
+            <div  id="failed" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 hidden" role="alert">
+                <span class="font-medium">Failed !</span> Login Contact Admin
+            </div>
             <form id="loginfrm" class="space-y-4">
                 @csrf
                 <div>
