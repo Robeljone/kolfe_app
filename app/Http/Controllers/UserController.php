@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Departments;
+use App\Models\Property;
 use Illuminate\Support\Facades\Hash;
 use Log;
 
@@ -49,7 +51,7 @@ class UserController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'Data Fetch Failed',
-                'data' => []
+                'data' => $e
             ], 500);
         }
     }
@@ -65,11 +67,13 @@ class UserController extends Controller
     }
     public function department()
     {
-        return view('department');
+        $data = Departments::query()->where('status','!=',3)->get();
+        return view('department',['script'=>'department.js','data'=>$data]);
     }
     public function index_property()
     {
-        return view('property');
+        $data = Property::query()->where('status','!=',3)->get();
+        return view('property',['script'=>'property.js','data'=>$data]);
     }
 
     public function new_user(Request $request)

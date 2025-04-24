@@ -11,8 +11,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->web(append: [
-            CheckUserSession::class,
+        $middleware->alias([
+            "check_log"=>CheckUserSession::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

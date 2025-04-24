@@ -17,8 +17,7 @@ class CheckUserSession
     public function handle(Request $request, Closure $next): Response
     {
         $data = $request->session()->all();
-
-        if($data['user_id']==null)
+        if(!isset($data['user_id']))
         {
             return redirect('/');
         }
