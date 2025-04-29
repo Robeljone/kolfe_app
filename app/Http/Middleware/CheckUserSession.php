@@ -21,7 +21,6 @@ class CheckUserSession
         {
             return redirect('/');
         }
-
         return $next($request);
     }
 }
