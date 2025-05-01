@@ -12,6 +12,7 @@ Route::post('/new_user', [UserController::class, 'new_user'])->middleware('check
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout'])->middleware('check_log');
 Route::get('/department', [UserController::class, 'department'])->middleware('check_log');
+Route::get('/request', [ModuleController::class, 'request_pg'])->middleware('check_log');
 Route::post('/new_department', [ModuleController::class, 'new_department'])->middleware('check_log');
 Route::get('/property', [UserController::class, 'index_property'])->middleware('check_log');
 Route::post('/new_property', [ModuleController::class, 'new_property'])->middleware('check_log');

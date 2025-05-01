@@ -198,4 +198,11 @@ class ModuleController extends Controller
       }
     }
 
+    public function request_pg()
+    {
+        $data = Property::query()->where('status','=',1)->get();
+        $dep = Departments::query()->where('status','=',1)->get();
+        return view('requ',['script'=>'request.js','data'=>$data,'dep'=>$dep]);
+    }
+
 }
