@@ -166,9 +166,15 @@
             <thead>
                 <tr>
                     <th style="text-align: left">SN.No</th>
-                    <th style="text-align: left">Type</th>
-                    <th style="text-align: left">Name</th>
-                    <th style="text-align: left">Description</th>
+                    <th style="text-align: left">Requester</th>
+                    <th style="text-align: left">Department</th>
+                    <th style="text-align: left">Event Place</th>
+                    <th style="text-align: left">Event Time</th>
+                    <th style="text-align: left">Total People</th>
+                    <th style="text-align: left">Rate Per Person</th>
+                    <th style="text-align: left">Event Manager Name</th>
+                    <th style="text-align: left">Event Manager Phone</th>
+                    <th style="text-align: left">Approval Status</th>
                     <th style="text-align: left">Action</th>
                 </tr>
             </thead>

@@ -10,6 +10,7 @@ use App\Models\Heritages;
 use App\Models\Property;
 use App\Models\Crafts;
 use App\Models\CraftLists;
+use App\Models\EventBookings;
 
 class ModuleController extends Controller
 {
@@ -203,6 +204,12 @@ class ModuleController extends Controller
         $data = Property::query()->where('status','=',1)->get();
         $dep = Departments::query()->where('status','=',1)->get();
         return view('requ',['script'=>'request.js','data'=>$data,'dep'=>$dep]);
+    }
+
+    public function approval_pg()
+    {
+        $data = EventBookings::query()->where('status','=',1)->get();
+        return view('approval',['script'=>'approval.js','data'=>$data]);
     }
 
 }
