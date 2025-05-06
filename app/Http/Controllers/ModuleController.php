@@ -11,6 +11,8 @@ use App\Models\Property;
 use App\Models\Crafts;
 use App\Models\CraftLists;
 use App\Models\EventBookings;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class ModuleController extends Controller
 {
