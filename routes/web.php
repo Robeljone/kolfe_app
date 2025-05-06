@@ -24,9 +24,10 @@ Route::post('/new_heritage', [ModuleController::class, 'new_heritage'])->middlew
 Route::get('/location', [ModuleController::class, 'location'])->middleware('check_log');
 Route::post('/new_location', [ModuleController::class, 'new_location'])->middleware('check_log');
 Route::get('/image', [ModuleController::class, 'index_image'])->middleware('check_log');
-Route::get('/craft', [ModuleController::class, 'craft'])->middleware('check_log');
+Route::get('/craft', action: [ModuleController::class, 'craft'])->middleware('check_log');
+Route::post('/new_craftlist', [ModuleController::class, 'new_craftlist'])->middleware('check_log');
 Route::get('/craft_list/{id}', [ModuleController::class, 'craft_list'])->middleware('check_log')->name('craft_detail');
 Route::post('/new_craft', [ModuleController::class, 'new_craft'])->middleware('check_log');
 Route::fallback(function () {
-    return redirect()->route('index'); // or ->route('index') based on your route name
+    return redirect()->route('index');
 });

@@ -201,6 +201,31 @@ class ModuleController extends Controller
       }
     }
 
+    public function new_craftlist(Request $request)
+    {
+      try
+      {
+         CraftLists::query()->create([
+            'rid'=>$request->rid,
+            'name'=>$request->name,
+            'aName'=>$request->aname,
+         ]);
+         return response()->json([
+             'status' => 'success',
+             'message' => 'Data stored success',
+             'data' => []
+         ], 200);
+      }catch(Exception $e)
+      {
+         Log::debug($e);
+         return response()->json([
+             'status' => 'error',
+             'message' => 'Data stored failed',
+             'data' => $e
+         ], 500);
+      }
+    }
+
     public function request_pg()
     {
         $data = Property::query()->where('status','=',1)->get();
@@ -212,6 +237,12 @@ class ModuleController extends Controller
     {
         $data = EventBookings::query()->where('status','=',1)->get();
         return view('approval',['script'=>'approval.js','data'=>$data]);
+    }
+
+    public function invalid_url(Request $request)
+    {
+        $request->session()->flush();
+        return redirect()->route('index'); // or ->route('index') based on your route name
     }
 
 }

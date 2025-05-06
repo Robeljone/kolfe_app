@@ -25,6 +25,7 @@
                         @csrf
                         <div class="grid md:grid-cols-4 md:gap-6">
                             <div>
+                                <input name="rid" id="craftId" type="hidden"/>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
                                     Name</label>
