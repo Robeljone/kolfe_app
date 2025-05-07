@@ -7,7 +7,8 @@
     var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
     // Change the icons inside the button based on previous settings
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+            '(prefers-color-scheme: dark)').matches)) {
         themeToggleLightIcon.classList.remove('hidden');
     } else {
         themeToggleDarkIcon.classList.remove('hidden');
@@ -15,7 +16,7 @@
 
     var themeToggleBtn = document.getElementById('theme-toggle');
 
-    themeToggleBtn.addEventListener('click', function () {
+    themeToggleBtn.addEventListener('click', function() {
 
         // toggle icons inside button
         themeToggleDarkIcon.classList.toggle('hidden');
@@ -46,27 +47,31 @@
 </script>
 <script>
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
+            '(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
     } else {
         document.documentElement.classList.remove('dark')
     }
 </script>
 <script>
-    $(document).ready(function()
-    {
-    $('#dataTable').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
-        button: true,
-        paging: true,
-        searching: true,
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            scrollY: '400px',
+            scrollX: true,
+            scrollCollapse: true,
+            button: true,
+            paging: true,
+            searching: true,
+        })
     })
-})
 </script>
 @isset($script)
-    <script src="/js/{{$script}}"></script>
+    <script src="/js/{{ $script }}"></script>
 @endisset
+
 </html>
