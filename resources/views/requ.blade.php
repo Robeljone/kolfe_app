@@ -133,33 +133,14 @@
                                    Signature</label>
                                    <div id="signature-pad" class="signature-pad">
                                     <div id="canvas-wrapper" class="signature-pad--body">
-                                      <canvas></canvas>
+                                      <canvas style="border: solid; border-color: black; width: auto; height: auto;"></canvas>
                                     </div>
+                                    <br>
                                     <div class="signature-pad--footer">
-                                      <div class="description">Sign above</div>
-
                                       <div class="signature-pad--actions">
                                         <div class="column">
-                                          <button type="button" class="button clear" data-action="clear">Clear</button>
-                                          <button type="button" class="button" data-action="undo" title="Ctrl-Z">Undo</button>
-                                          <button type="button" class="button" data-action="redo" title="Ctrl-Y">Redo</button>
-                                          <br/>
-                                          <button type="button" class="button" data-action="change-color">Change color</button>
-                                          <button type="button" class="button" data-action="change-width">Change width</button>
-                                          <button type="button" class="button" data-action="change-background-color">Change background color</button>
-
+                                          <button type="button" class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 clear" data-action="clear">Clear Sign</button>
                                         </div>
-                                        <div class="column">
-                                          <button type="button" class="button save" data-action="save-png">Save as PNG</button>
-                                          <button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
-                                          <button type="button" class="button save" data-action="save-svg">Save as SVG</button>
-                                          <button type="button" class="button save" data-action="save-svg-with-background">Save as SVG with
-                                            background</button>
-                                        </div>
-                                      </div>
-
-                                      <div>
-                                        <button type="button" class="button" data-action="open-in-window">Open in Window</button>
                                       </div>
                                     </div>
                                   </div>

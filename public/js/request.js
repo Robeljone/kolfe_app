@@ -1,8 +1,19 @@
 $(document).ready(function() {
+    
+    const wrapper = document.getElementById("signature-pad");
+    const clearButton = wrapper.querySelector("[data-action=clear]");
+
     const canvas = wrapper.querySelector("canvas");
+
     const signaturePad = new SignaturePad(canvas, {
-      backgroundColor: 'rgb(255, 255, 255)'
+      backgroundColor: 'rgb(255, 255, 255)',
+      penColor: 'rgb(0, 0, 0)',
     });
+
+    clearButton.addEventListener("click", () => {
+        signaturePad.clear();
+      });
+
     $("#newfrm").on("submit", function(event) {
         event.preventDefault();
         $.ajax({
@@ -17,4 +28,5 @@ $(document).ready(function() {
             },
         });
     });
+
 });
