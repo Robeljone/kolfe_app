@@ -230,7 +230,7 @@ class ModuleController extends Controller
     {
         $data = Property::query()->where('status','=',1)->get();
         $dep = Departments::query()->where('status','=',1)->get();
-        return view('requ',['script'=>'request.js','data'=>$data,'dep'=>$dep]);
+        return view('requ',['script'=>'request.js','css'=>'signature.css','data'=>$data,'dep'=>$dep]);
     }
 
     public function approval_pg()

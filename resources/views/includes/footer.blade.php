@@ -70,8 +70,8 @@
         })
     })
 </script>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@5.0.7/dist/signature_pad.umd.min.js"></script>
 @isset($script)
     <script src="/js/{{ $script }}"></script>
 @endisset
-
 </html>
