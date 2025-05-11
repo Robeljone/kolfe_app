@@ -331,7 +331,7 @@ class ModuleController extends Controller
     public function index_books()
     {
         $lib = Libraries::query()->get();
-        $data = Books::query()->get();
+        $data = Books::query()->with(['libs'])->get();
         return view('books',['script'=>'books.js','lib'=>$lib,'data'=>$data]);
     }
 

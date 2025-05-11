@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Libraries;
 
 class Books extends Model
 {
@@ -17,4 +18,9 @@ class Books extends Model
       'img',
       'file'  
     ];
+
+    public function libs()
+    {
+      return $this->hasOne(Libraries::class,'id','libid');
+    }
 }

@@ -118,7 +118,7 @@
                 @foreach ($data as $key)
                     <tr>
                         <td style="text-align: left">{{ $loop->index + 1 }}</td>
-                        <td>{{ $key->libId }}</td>
+                        <td>{{ $key->libs!=null?$key->libs->name:' '}}</td>
                         <td>{{ $key->name }}</td>
                         <td>{{ $key->aName}}</td>
                         <td>{{ $key->aut}}</td>
