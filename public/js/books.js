@@ -17,7 +17,6 @@ $("#newfrm").on("submit", function(event) {
     formData.append('auth', auth);
     formData.append('amauth', amauth);
     formData.append('libs', libs);
-    formData.append('adet', adet);
 
     event.preventDefault();
     $.ajax({
