@@ -27,7 +27,7 @@
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Libraries</label>
-                                <select name="libr" autocomplete="off"
+                                <select id="libs" autocomplete="off"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option value="">Please Select</option>
                                     @foreach ($lib as $da)
@@ -39,20 +39,20 @@
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
                                     Name</label>
-                                <input type="text" id="small-input" name="name" autocomplete="off" placeholder="Name Here"
+                                <input type="text"  id="name" autocomplete="off" placeholder="Name Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Amharic
                                     Name</label>
-                                <input type="text" id="small-input" name="aname" autocomplete="off" placeholder="Amharic Name Here"
+                                <input type="text"  id="aname" autocomplete="off" placeholder="Amharic Name Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Author</label>
-                                <input type="text" id="small-input" name="auth" autocomplete="off" placeholder="Location Here"
+                                <input type="text"  id="auth" autocomplete="off" placeholder="Location Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                         </div>
@@ -61,19 +61,19 @@
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Author Amharic</label>
-                                <input type="text" id="small-input" name="amauth" autocomplete="off" placeholder="Location Here"
+                                <input type="text"  id="amauth" autocomplete="off" placeholder="Location Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Image</label>
-                                <input type="file" id="small-input" name="amauth" autocomplete="off" placeholder="Location Here"
+                                <input type="file"  id="img" autocomplete="off" placeholder="Location Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">File</label>
-                                <input type="file" id="small-input" name="amauth" autocomplete="off" placeholder="Location Here"
+                                <input type="file"  id="fil" autocomplete="off" placeholder="Location Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                         </div>
@@ -106,28 +106,26 @@
             <thead>
                 <tr>
                     <th style="text-align: left">SN.No</th>
-                    <th style="text-align: left">Type</th>
+                    <th style="text-align: left">Library</th>
                     <th style="text-align: left">Name</th>
                     <th style="text-align: left">Amharic Name</th>
-                    <th style="text-align: left">Location</th>
-                    <th style="text-align: left">Description</th>
-                    <th style="text-align: left">Amharic Description</th>
+                    <th style="text-align: left">Author</th>
+                    <th style="text-align: left">Amharic Author</th>
                     <th style="text-align: left">Action</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($data as $key)
+                @foreach ($data as $key)
                     <tr>
                         <td style="text-align: left">{{ $loop->index + 1 }}</td>
-                        <td>{{ $key->type='F'?'Fixed':'Movable' }}</td>
+                        <td>{{ $key->libId }}</td>
                         <td>{{ $key->name }}</td>
                         <td>{{ $key->aName}}</td>
-                        <td>{{ $key->mLoc}}</td>
-                        <td>{{ $key->disc}}</td>
-                        <td>{{ $key->aDisc}}</td>
+                        <td>{{ $key->aut}}</td>
+                        <td>{{ $key->aAut}}</td>
                         <td></td>
                     </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
     </div>

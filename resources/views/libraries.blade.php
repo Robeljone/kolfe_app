@@ -104,19 +104,23 @@
             <thead>
                 <tr>
                     <th style="text-align: left">SN.No</th>
-                    <th style="text-align: left">Type</th>
                     <th style="text-align: left">Name</th>
+                    <th style="text-align: left">Amharic Name</th>
                     <th style="text-align: left">Description</th>
+                    <th style="text-align: left">Amharic Description</th>
+                    <th style="text-align: left">Map</th>
                     <th style="text-align: left">Action</th>
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($data as $key)
+                @foreach ($data as $key)
                     <tr>
                         <td style="text-align: left">{{ $loop->index + 1 }}</td>
-                        <td>{{ $key->type }}</td>
                         <td>{{ $key->name }}</td>
-                        <td>{{ $key->disc }}</td>
+                        <td>{{ $key->aName }}</td>
+                        <td>{{ $key->det }}</td>
+                        <td>{{ $key->aDet }}</td>
+                        <td>{{ $key->map }}</td>
                         <td>
                             <div class="grid sm:grid-cols-2 md:gap-2">
                                 <button type="button"
@@ -144,7 +148,7 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
     </div>

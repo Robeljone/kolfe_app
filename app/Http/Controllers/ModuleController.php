@@ -330,7 +330,8 @@ class ModuleController extends Controller
     public function index_books()
     {
         $lib = Libraries::query()->get();
-        return view('books',['script'=>'books.js','lib'=>$lib]);
+        $data = Books::query()->get();
+        return view('books',['script'=>'books.js','lib'=>$lib,'data'=>$data]);
     }
 
     public function new_library(Request $request)
@@ -453,7 +454,7 @@ class ModuleController extends Controller
             $image->move(public_path('uploaded_images/news'), $imageName);
 
             Images::query()->create([
-                'type'=>'nw',
+                'type'=>'n',
                 'rid'=>$res->id,
                 'img'=>$imageName
             ]);
@@ -496,10 +497,99 @@ class ModuleController extends Controller
             $image->move(public_path('uploaded_images/art_news'), $imageName);
 
             Images::query()->create([
-                'type'=>'nw',
+                'type'=>'a',
                 'rid'=>$res->id,
                 'img'=>$imageName
             ]);
+        }
+
+         return response()->json([
+             'status' => 'success',
+             'message' => 'Data stored success',
+             'data' => []
+         ], 200);
+      }
+      catch(Exception $e)
+      {
+         Log::debug($e);
+         return response()->json([
+             'status' => 'error',
+             'message' => 'Data stored failed',
+             'data' => $e
+         ], 500);
+      }
+    }
+
+    public function new_books(Request $request)
+    {
+      try
+      {
+
+         if($request->file('image')!=null && $request->file('fil')!=null)
+        {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('books/img'), $imageName);
+
+            $file = $request->file('fil');
+            $fileName = $file->getClientOriginalName();
+            $file->move(public_path('books/file'), $fileName);
+
+            Books::query()->create([
+                'libid'=>$request->libs,
+                'name'=>$request->name,
+                'aName'=>$request->aname,
+                'aut'=>$request->auth,
+                'aAut'=>$request->amauth,
+                'img'=>$imageName,
+                'file'=>$fileName  
+             ]);
+        }
+        elseif($request->file('image')==null && $request->file('fil')!=null)
+        {
+
+            $file = $request->file('image');
+            $fileName = $file->getClientOriginalName();
+            $file->move(public_path('books/file'), $fileName);
+
+            Books::query()->create([
+                'libid'=>$request->libs,
+                'name'=>$request->name,
+                'aName'=>$request->aname,
+                'aut'=>$request->auth,
+                'aAut'=>$request->amauth,
+                'img'=>'img.jpg',
+                'file'=>$fileName
+             ]);
+        }
+        elseif($request->file('image')!=null && $request->file('fil')==null)
+        {
+
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('books/img'), $imageName);
+
+            Books::query()->create([
+                'libid'=>$request->libs,
+                'name'=>$request->name,
+                'aName'=>$request->aname,
+                'aut'=>$request->auth,
+                'aAut'=>$request->amauth,
+                'img'=>$imageName,
+                'file'=>'file.pdf'
+             ]);
+        }
+        else
+        {
+            Books::query()->create([
+                'libid'=>$request->libs,
+                'name'=>$request->name,
+                'aName'=>$request->aname,
+                'aut'=>$request->auth,
+                'aAut'=>$request->amauth,
+                'img'=>'img.jpg',
+                'file'=>'file.pdf'  
+             ]);
         }
 
          return response()->json([
