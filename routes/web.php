@@ -23,11 +23,19 @@ Route::get('/heritage', [ModuleController::class, 'heritage'])->middleware('chec
 Route::post('/new_heritage', [ModuleController::class, 'new_heritage'])->middleware('check_log');
 Route::get('/location', [ModuleController::class, 'location'])->middleware('check_log');
 Route::post('/new_location', [ModuleController::class, 'new_location'])->middleware('check_log');
-Route::get('/image', [ModuleController::class, 'index_image'])->middleware('check_log');
 Route::get('/craft', action: [ModuleController::class, 'craft'])->middleware('check_log');
 Route::post('/new_craftlist', [ModuleController::class, 'new_craftlist'])->middleware('check_log');
 Route::get('/craft_list/{id}', [ModuleController::class, 'craft_list'])->middleware('check_log')->name('craft_detail');
 Route::post('/new_craft', [ModuleController::class, 'new_craft'])->middleware('check_log');
+Route::get('/events', action: [ModuleController::class, 'events'])->middleware('check_log');
+Route::get('/blogs', action: [ModuleController::class, 'blogs'])->middleware('check_log');
+Route::post('/new_blog', action: [ModuleController::class, 'new_blog'])->middleware('check_log');
+Route::get('/news', action: [ModuleController::class, 'news'])->middleware('check_log');
+Route::post('/new_news', action: [ModuleController::class, 'new_news'])->middleware('check_log');
+Route::post('/new_events', action: [ModuleController::class, 'new_events'])->middleware('check_log');
+Route::get('/all_book', [ModuleController::class, 'index_books'])->middleware('check_log');
+Route::get('/all_libraries', [ModuleController::class, 'index_libraries'])->middleware('check_log');
+Route::post('/new_library', [ModuleController::class, 'new_library'])->middleware('check_log');
 Route::fallback(function () {
     return redirect()->route('index');
 });

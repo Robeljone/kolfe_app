@@ -1,21 +1,28 @@
 $("#newfrm").on("submit", function(event) {
-    
+
     const fileInput = document.getElementById('img');
-    const name = document.getElementById('name').value;
-    const type = document.getElementById('type').value;
-    const dest= document.getElementById('dest').value;
+    const title = document.getElementById('title').value;
+    const atitle = document.getElementById('atitle').value;
+    const auth = document.getElementById('auth').value;
+    const aauth = document.getElementById('aauth').value;
+    const desc = document.getElementById('desc').value;
+    const adesc = document.getElementById('adesc').value;
 
     const formData = new FormData();
 
     formData.append('image', fileInput.files[0]);
-    formData.append('name', name);
-    formData.append('type', type);
-    formData.append('dest', dest);
+    formData.append('title', title);
+    formData.append('atitle', atitle);
+    formData.append('auth', auth);
+    formData.append('aauth', aauth);
+    formData.append('desc', desc);
+    formData.append('adesc', adesc);
 
     event.preventDefault();
+
     $.ajax({
         type: "POST",
-        url: "/new_destination",
+        url: "/new_blog",
         data: formData,
         processData: false, // Important for FormData
         contentType: false, // Important for FormData

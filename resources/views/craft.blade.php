@@ -28,28 +28,28 @@
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
                                     Name</label>
-                                <input type="text" id="small-input" name="name" autocomplete="off" placeholder="Amharic Name Here"
+                                <input type="text"  id="name" autocomplete="off" placeholder="Amharic Name Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
                                     Amharic Name</label>
-                                <input type="text" id="small-input" name="aname" autocomplete="off" placeholder="Amharic Name Here"
+                                <input type="text"  id="aname" autocomplete="off" placeholder="Amharic Name Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
                                     Map</label>
-                                <input type="text" id="small-input" name="loc" autocomplete="off" placeholder="Location Map Here"
+                                <input type="text"  id="loc" autocomplete="off" placeholder="Location Map Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
                                     Descripion</label>
-                                    <textarea name="det" rows="4"
+                                    <textarea id="det" rows="4"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Description Here..." required></textarea>
                             </div>
@@ -58,8 +58,15 @@
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+                                    Image</label>
+                                <input type="file"  id="img" autocomplete="off" placeholder="Location Map Here"
+                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="small-input"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
                                     Amharic Descripion</label>
-                                    <textarea name="adet" rows="4"
+                                    <textarea id="adet" rows="4"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Amharic Description Here..." required></textarea>
                             </div>

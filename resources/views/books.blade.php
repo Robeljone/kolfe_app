@@ -11,7 +11,7 @@
                     class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
                     data-accordion-target="#accordion-flush-body-1" aria-expanded="true"
                     aria-controls="accordion-flush-body-1">
-                    <span>New Heritage</span>
+                    <span>New Books</span>
                     <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -26,32 +26,33 @@
                         <div class="grid md:grid-cols-4 md:gap-6">
                             <div>
                                 <label for="small-input"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Type</label>
-                                <select id="type" autocomplete="off"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Libraries</label>
+                                <select name="libr" autocomplete="off"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option value="">Please Select</option>
-                                    <option value="F">Fixed</option>
-                                    <option value="M">Movable</option>
+                                    @foreach ($lib as $da)
+                                    <option value="{{$da->id}}">{{$da->name.'-'.$da->aName}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
                                     Name</label>
-                                <input type="text"  id="name" autocomplete="off" placeholder="Name Here"
+                                <input type="text" id="small-input" name="name" autocomplete="off" placeholder="Name Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Amharic
                                     Name</label>
-                                <input type="text"  id="aname" autocomplete="off" placeholder="Amharic Name Here"
+                                <input type="text" id="small-input" name="aname" autocomplete="off" placeholder="Amharic Name Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Place Location</label>
-                                <input type="text"  id="loca" autocomplete="off" placeholder="Location Here"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Author</label>
+                                <input type="text" id="small-input" name="auth" autocomplete="off" placeholder="Location Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                         </div>
@@ -59,25 +60,21 @@
                         <div class="grid md:grid-cols-4 md:gap-6">
                             <div>
                                 <label for="small-input"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Image</label>
-                                <input type="file"  id="img" autocomplete="off" placeholder="Location Here"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Author Amharic</label>
+                                <input type="text" id="small-input" name="amauth" autocomplete="off" placeholder="Location Here"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-                                    Description</label>
-                                    <textarea id="desc" rows="4"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Description Here..." required></textarea>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Image</label>
+                                <input type="file" id="small-input" name="amauth" autocomplete="off" placeholder="Location Here"
+                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div>
                                 <label for="small-input"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-                                    Description Amharic</label>
-                                    <textarea id="adesc" rows="4"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Amharic Description Here..." required></textarea>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">File</label>
+                                <input type="file" id="small-input" name="amauth" autocomplete="off" placeholder="Location Here"
+                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                         </div>
                         <div class="grid md:grid-cols-4 md:gap-6">
@@ -119,7 +116,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $key)
+                {{-- @foreach ($data as $key)
                     <tr>
                         <td style="text-align: left">{{ $loop->index + 1 }}</td>
                         <td>{{ $key->type='F'?'Fixed':'Movable' }}</td>
@@ -130,7 +127,7 @@
                         <td>{{ $key->aDisc}}</td>
                         <td></td>
                     </tr>
-                @endforeach
+                @endforeach --}}
             </tbody>
         </table>
     </div>

@@ -11,7 +11,7 @@
                     class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3"
                     data-accordion-target="#accordion-flush-body-1" aria-expanded="true"
                     aria-controls="accordion-flush-body-1">
-                    <span>New Destination</span>
+                    <span>Libraries</span>
                     <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -27,21 +27,16 @@
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-                                    Type</label>
-                                <select id="type"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    Name</label>
+                                <input type="text" id="name" autocomplete="off" placeholder="Name Here !"
+                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     required>
-                                    <option value="">Please Select type</option>
-                                    <option value="Church">Church</option>
-                                    <option value="Mussem">Mussem</option>
-                                    <option value="Art Galary">Art Galary</option>
-                                </select>
                             </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-                                    Name</label>
-                                <input type="text" id="name" autocomplete="off" placeholder="Name Here !"
+                                    Amharic Name</label>
+                                <input type="text" id="aname" autocomplete="off" placeholder="Name Here !"
                                     class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     required>
                             </div>
@@ -56,13 +51,30 @@
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+                                    Map</label>
+                                <input type="text" id="map" autocomplete="off" placeholder="Name Here !"
+                                    class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="grid md:grid-cols-4 md:gap-6">
+                            <div>
+                                <label for="small-input"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
                                     Description</label>
-                                <textarea id="dest" rows="4"
+                                <textarea id="des" rows="4"
                                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Description Here..." required></textarea>
                             </div>
-                        </div>
-                        <div class="grid md:grid-cols-4 md:gap-6">
+                            <div>
+                                <label for="small-input"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+                                    Amharic Description</label>
+                                <textarea id="ades" rows="4"
+                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Amharic Description Here..." required></textarea>
+                            </div>
                             <div>
                                 <label for="small-input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">&nbsp;</label>
@@ -99,7 +111,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $key)
+                {{-- @foreach ($data as $key)
                     <tr>
                         <td style="text-align: left">{{ $loop->index + 1 }}</td>
                         <td>{{ $key->type }}</td>
@@ -132,7 +144,7 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                @endforeach --}}
             </tbody>
         </table>
     </div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Books;
+use App\Models\Libraries;
 use Exception;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -75,6 +77,8 @@ class UserController extends Controller
         $data = Property::query()->where('status','!=',3)->get();
         return view('property',['script'=>'property.js','data'=>$data]);
     }
+
+ 
 
     public function new_user(Request $request)
     {

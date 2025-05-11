@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CulturalBlog;
+use App\Models\Images;
+use App\Models\News;
 use Illuminate\Http\Request;
 use App\Models\Departments;
 use App\Models\Destinations;
@@ -11,6 +14,9 @@ use App\Models\Property;
 use App\Models\Crafts;
 use App\Models\CraftLists;
 use App\Models\EventBookings;
+use App\Models\CulturalEvents;
+use App\Models\Libraries;
+use App\Models\Books;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
@@ -73,11 +79,25 @@ class ModuleController extends Controller
    {
      try
      {
-        Destinations::query()->create([
+ 
+        $res = Destinations::query()->create([
           'type'=>$request->type,
           'name'=>$request->name,
           'disc'=>$request->dest
         ]);
+
+        if($request->file('image')!=null)
+        {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('uploaded_images/destination'), $imageName);
+
+            Images::query()->create([
+                'type'=>'d',
+                'rid'=>$res->id,
+                'img'=>$imageName
+            ]);
+        }
         return response()->json([
             'status' => 'success',
             'message' => 'Data stored success',
@@ -98,17 +118,29 @@ class ModuleController extends Controller
    {
      try
      {
-        Heritages::query()->create([
+        $res = Heritages::query()->create([
             'type'=>$request->type,
             'name'=>$request->name,
             'aName'=>$request->aname,
             'pLoc'=>1,
-            'mLoc'=>$request->loca,
+            'mLoc'=>1,
             'vid'=>'O',
             'disc'=>$request->desc,
             'aDisc'=>$request->adesc,
             'viewer'=>0
         ]);
+        if($request->file('image')!=null)
+        {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('uploaded_images/heritage'), $imageName);
+
+            Images::query()->create([
+                'type'=>'h',
+                'rid'=>$res->id,
+                'img'=>$imageName
+            ]);
+        }
         return response()->json([
             'status' => 'success',
             'message' => 'Data stored success',
@@ -178,13 +210,27 @@ class ModuleController extends Controller
     {
       try
       {
-         Crafts::query()->create([
+         $res = Crafts::query()->create([
           'name'=>$request->name,
           'aName'=>$request->aname,
           'map'=>$request->loc,
           'det'=>$request->det,
           'ADet'=>$request->adet
          ]);
+
+         if($request->file('image')!=null)
+        {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('uploaded_images/craft'), $imageName);
+
+            Images::query()->create([
+                'type'=>'c',
+                'rid'=>$res->id,
+                'img'=>$imageName
+            ]);
+        }
+
          return response()->json([
              'status' => 'success',
              'message' => 'Data stored success',
@@ -237,6 +283,190 @@ class ModuleController extends Controller
     {
         $data = EventBookings::query()->where('status','=',1)->get();
         return view('approval',['script'=>'approval.js','data'=>$data]);
+    }
+
+    public function events()
+    {
+        $data = CulturalEvents::query()->where('status','!=',3)->get();
+        return view('events',['data'=>$data,'script'=>'event.js']);
+    }
+
+    public function new_events(Request $request)
+    {
+      try
+      {
+         CulturalEvents::query()->create([
+            'name'=>$request->name,
+            'aName'=>$request->aname,
+            'desc'=>$request->det,
+            'aDesc'=>$request->adet,
+            'place'=>$request->place,
+            'event_date'=>$request->edate,
+            'status'=>1
+         ]);
+         return response()->json([
+             'status' => 'success',
+             'message' => 'Data stored success',
+             'data' => []
+         ], 200);
+      }catch(Exception $e)
+      {
+         Log::debug($e);
+         return response()->json([
+             'status' => 'error',
+             'message' => 'Data stored failed',
+             'data' => $e
+         ], 500);
+      }
+    }
+
+    public function index_libraries()
+    {
+        $data = Libraries::query()->get();
+        return view('libraries',['data'=>$data,'script'=>'library.js']);
+    }
+
+    public function index_books()
+    {
+        $lib = Libraries::query()->get();
+        return view('books',['script'=>'books.js','lib'=>$lib]);
+    }
+
+    public function new_library(Request $request)
+    {
+      try
+      {
+        if($request->file('image')!=null)
+        {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('uploaded_images/libs'), $imageName);
+        }
+        else{
+         $imageName = "lib.jpg";   
+        }
+         Libraries::query()->create([
+            'name'=>$request->name,
+            'aName'=>$request->aname,
+            'det'=>$request->des,
+            'aDet'=>$request->ades,
+            'img'=>$imageName,
+            'map'=>$request->map
+         ]);
+
+         return response()->json([
+             'status' => 'success',
+             'message' => 'Data stored success',
+             'data' => []
+         ], 200);
+
+      }catch(Exception $e)
+      {
+         Log::debug($e);
+         return response()->json([
+             'status' => 'error',
+             'message' => 'Data stored failed',
+             'data' => $e
+         ], 500);
+      }
+    }
+
+    public function blogs()
+    {
+        $data = CulturalBlog::query()->get();
+        return view('blogs',['script'=>'blog.js','data'=>$data]);
+    }
+
+    public function news()
+    {
+        $data = News::query()->get();
+        return view('news',['script'=>'news.js','data'=>$data]);
+    }    
+
+    public function new_blog(Request $request)
+    {
+      try
+      {
+         $res = CulturalBlog::query()->create([
+            'title'=>$request->title,
+            'aTitle'=>$request->atitle,
+            'aut'=>$request->auth,
+            'aAut'=>$request->aauth,
+            'det'=>$request->desc,
+            'ADet'=>$request->adesc
+         ]);
+
+         if($request->file('image')!=null)
+        {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('uploaded_images/blogs'), $imageName);
+
+            Images::query()->create([
+                'type'=>'cb',
+                'rid'=>$res->id,
+                'img'=>$imageName
+            ]);
+        }
+
+         return response()->json([
+             'status' => 'success',
+             'message' => 'Data stored success',
+             'data' => []
+         ], 200);
+      }
+      catch(Exception $e)
+      {
+         Log::debug($e);
+         return response()->json([
+             'status' => 'error',
+             'message' => 'Data stored failed',
+             'data' => $e
+         ], 500);
+      }
+    }
+
+    public function new_news(Request $request)
+    {
+      try
+      {
+         $res = News::query()->create([
+            'title'=>$request->title,
+            'aTitle'=>$request->atitle,
+            'aut'=>$request->auth,
+            'aAut'=>$request->aauth,
+            'det'=>$request->desc,
+            'ADet'=>$request->adesc
+         ]);
+
+         if($request->file('image')!=null)
+        {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('uploaded_images/news'), $imageName);
+
+            Images::query()->create([
+                'type'=>'nw',
+                'rid'=>$res->id,
+                'img'=>$imageName
+            ]);
+        }
+
+         return response()->json([
+             'status' => 'success',
+             'message' => 'Data stored success',
+             'data' => []
+         ], 200);
+      }
+      catch(Exception $e)
+      {
+         Log::debug($e);
+         return response()->json([
+             'status' => 'error',
+             'message' => 'Data stored failed',
+             'data' => $e
+         ], 500);
+      }
     }
 
     public function invalid_url(Request $request)

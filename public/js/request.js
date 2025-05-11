@@ -5,6 +5,8 @@ $(document).ready(function() {
 
     const canvas = wrapper.querySelector("canvas");
 
+    const ctx = canvas.getContext('2d');
+
     canvas.addEventListener("touchstart", function(e) {
         e.preventDefault();
         // start drawing
@@ -18,6 +20,7 @@ $(document).ready(function() {
     clearButton.addEventListener("click", () => {
         signaturePad.clear();
       });
+
       
     $("#newfrm").on("submit", function(event) {
         event.preventDefault();

@@ -11,6 +11,8 @@ class Libraries extends Model
     protected $fillable = [
         'name',
         'aName',
+        'det',
+        'aDet',
         'img',
         'map'
     ];
