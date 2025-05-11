@@ -21,6 +21,6 @@ class Books extends Model
 
     public function libs()
     {
-      return $this->hasOne(Libraries::class,'id','libid');
+      return $this->hasOne(Libraries::class,foreignKey: 'id',localKey: 'libId');
     }
 }
