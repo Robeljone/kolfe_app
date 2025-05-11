@@ -19,20 +19,20 @@ $("#newfrm").on("submit", function(event) {
     formData.append('libs', libs);
 
     event.preventDefault();
-    // $.ajax({
-    //     type: "POST",
-    //     url: "/new_books",
-    //     data: formData,
-    //     processData: false, // Important for FormData
-    //     contentType: false, // Important for FormData
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     },
-    //     success: function (data) {
-    //         console.log('Success:', data);
-    //     },
-    //     error: function (xhr) {
-    //         console.log('Error:', xhr);
-    //     }
-    // });
+    $.ajax({
+        type: "POST",
+        url: "/new_books",
+        data: formData,
+        processData: false, // Important for FormData
+        contentType: false, // Important for FormData
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (data) {
+            console.log('Success:', data);
+        },
+        error: function (xhr) {
+            console.log('Error:', xhr);
+        }
+    });
 });
