@@ -119,6 +119,7 @@ class ModuleController extends Controller
    {
      try
      {
+        Log::debug($request);
         $res = Heritages::query()->create([
             'type'=>$request->type=="f"?'f':'m',
             'name'=>$request->name,
