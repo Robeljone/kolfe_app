@@ -1,5 +1,6 @@
 $("#newfrm").on("submit", function(event) {
-
+    
+    event.preventDefault();
     
     const fileInput = document.getElementById('img');
     const type = document.getElementById('type').value;
@@ -19,22 +20,26 @@ $("#newfrm").on("submit", function(event) {
     formData.append('desc', desc);
     formData.append('adesc', adesc);
 
-    event.preventDefault();
-    $.ajax({
-        type: "POST",
-        url: "/new_heritage",
-        data: formData,
-        processData: false, // Important for FormData
-        contentType: false, // Important for FormData
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function (data) {
-            console.log('Success:', data);
-        },
-        error: function (xhr) {
-            console.log('Error:', xhr);
-        }
-    });
+
+    for (var [key, value] of formData.entries()) 
+      { 
+        console.log(key, value);
+      }
+    // $.ajax({
+    //     type: "POST",
+    //     url: "/new_heritage",
+    //     data: formData,
+    //     processData: false, // Important for FormData
+    //     contentType: false, // Important for FormData
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     },
+    //     success: function (data) {
+    //         console.log('Success:', data);
+    //     },
+    //     error: function (xhr) {
+    //         console.log('Error:', xhr);
+    //     }
+    // });
 
 });
