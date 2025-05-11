@@ -21,25 +21,21 @@ $("#newfrm").on("submit", function(event) {
     formData.append('adesc', adesc);
 
 
-    for (var [key, value] of formData.entries()) 
-      { 
-        console.log(key, value);
-      }
-    // $.ajax({
-    //     type: "POST",
-    //     url: "/new_heritage",
-    //     data: formData,
-    //     processData: false, // Important for FormData
-    //     contentType: false, // Important for FormData
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     },
-    //     success: function (data) {
-    //         console.log('Success:', data);
-    //     },
-    //     error: function (xhr) {
-    //         console.log('Error:', xhr);
-    //     }
-    // });
+    $.ajax({
+        type: "POST",
+        url: "/new_heritage",
+        data: formData,
+        processData: false, // Important for FormData
+        contentType: false, // Important for FormData
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (data) {
+            console.log('Success:', data);
+        },
+        error: function (xhr) {
+            console.log('Error:', xhr);
+        }
+    });
 
 });
