@@ -120,7 +120,7 @@ class ModuleController extends Controller
      try
      {
         $res = Heritages::query()->create([
-            'type'=>$request->type,
+            'type'=>$request->type=="f"?'f':'m',
             'name'=>$request->name,
             'aName'=>$request->aname,
             'pLoc'=>1,
