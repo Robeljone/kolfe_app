@@ -287,7 +287,7 @@ class ModuleController extends Controller
 
     public function events()
     {
-        $data = CulturalEvents::query()->where('status','!=',3)->get();
+        $data = CulturalEvents::query()->get();
         return view('events',['data'=>$data,'script'=>'event.js']);
     }
 
@@ -298,11 +298,11 @@ class ModuleController extends Controller
          CulturalEvents::query()->create([
             'name'=>$request->name,
             'aName'=>$request->aname,
-            'desc'=>$request->det,
-            'aDesc'=>$request->adet,
-            'place'=>$request->place,
-            'event_date'=>$request->edate,
-            'status'=>1
+            'det'=>$request->det,
+            'aDet'=>$request->adet,
+            'loc'=>$request->place,
+            'aLoc'=>$request->aplace,
+            'date'=>$request->edate
          ]);
          return response()->json([
              'status' => 'success',

@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class CulturalEvents extends Model
 {
-    protected $table = 'events_tables';
+    protected $table = 'events';
     protected $fillable = [
       'name',
       'aName',
-      'desc',
-      'aDesc',
-      'place',
-      'event_date',
-      'status'
+      'det',
+      'aDet',
+      'loc',
+      'aLoc',
+      'date',
     ];
 }
