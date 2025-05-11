@@ -30,8 +30,10 @@ Route::post('/new_craft', [ModuleController::class, 'new_craft'])->middleware('c
 Route::get('/events', action: [ModuleController::class, 'events'])->middleware('check_log');
 Route::get('/blogs', action: [ModuleController::class, 'blogs'])->middleware('check_log');
 Route::post('/new_blog', action: [ModuleController::class, 'new_blog'])->middleware('check_log');
+Route::get('/arts', action: [ModuleController::class, 'arts'])->middleware('check_log');
 Route::get('/news', action: [ModuleController::class, 'news'])->middleware('check_log');
 Route::post('/new_news', action: [ModuleController::class, 'new_news'])->middleware('check_log');
+Route::post('/new_arts', action: [ModuleController::class, 'new_arts'])->middleware('check_log');
 Route::post('/new_events', action: [ModuleController::class, 'new_events'])->middleware('check_log');
 Route::get('/all_book', [ModuleController::class, 'index_books'])->middleware('check_log');
 Route::get('/all_libraries', [ModuleController::class, 'index_libraries'])->middleware('check_log');

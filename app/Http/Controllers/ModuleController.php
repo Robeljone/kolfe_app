@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ArtNews;
 use App\Models\CulturalBlog;
 use App\Models\Images;
 use App\Models\News;
@@ -377,6 +378,12 @@ class ModuleController extends Controller
         return view('blogs',['script'=>'blog.js','data'=>$data]);
     }
 
+    public function arts()
+    {
+        $data = ArtNews::query()->get();
+        return view('blogs',['script'=>'art.js','data'=>$data]);
+    }
+
     public function news()
     {
         $data = News::query()->get();
@@ -444,6 +451,49 @@ class ModuleController extends Controller
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
             $image->move(public_path('uploaded_images/news'), $imageName);
+
+            Images::query()->create([
+                'type'=>'nw',
+                'rid'=>$res->id,
+                'img'=>$imageName
+            ]);
+        }
+
+         return response()->json([
+             'status' => 'success',
+             'message' => 'Data stored success',
+             'data' => []
+         ], 200);
+      }
+      catch(Exception $e)
+      {
+         Log::debug($e);
+         return response()->json([
+             'status' => 'error',
+             'message' => 'Data stored failed',
+             'data' => $e
+         ], 500);
+      }
+    }
+
+    public function art_news(Request $request)
+    {
+      try
+      {
+         $res = ArtNews::query()->create([
+            'title'=>$request->title,
+            'aTitle'=>$request->atitle,
+            'aut'=>$request->auth,
+            'aAut'=>$request->aauth,
+            'det'=>$request->desc,
+            'ADet'=>$request->adesc
+         ]);
+
+         if($request->file('image')!=null)
+        {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path('uploaded_images/art_news'), $imageName);
 
             Images::query()->create([
                 'type'=>'nw',

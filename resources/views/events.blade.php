@@ -124,8 +124,8 @@
                         <td>{{ $key->aName }}</td>
                         <td>{{ $key->det }}</td>
                         <td>{{ $key->aDet }}</td>
-                        <td>{{ $key->place }}</td>
-                        <td>{{ $key->aplace }}</td>
+                        <td>{{ $key->loc }}</td>
+                        <td>{{ $key->aLoc }}</td>
                         <td>{{ $key->event_date }}</td>
                         <td>{{ $key->status==1?'Active':'Passive'}}</td>
                         <td>
