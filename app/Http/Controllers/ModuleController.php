@@ -381,7 +381,7 @@ class ModuleController extends Controller
     public function arts()
     {
         $data = ArtNews::query()->get();
-        return view('blogs',['script'=>'art.js','data'=>$data]);
+        return view('art',['script'=>'art.js','data'=>$data]);
     }
 
     public function news()
