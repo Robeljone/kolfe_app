@@ -110,6 +110,7 @@
                     <th style="text-align: left">Desc</th>
                     <th style="text-align: left">Amharic Desc</th>
                     <th style="text-align: left">Place</th>
+                    <th style="text-align: left">Amharic Place</th>
                     <th style="text-align: left">Date</th>
                     <th style="text-align: left">Status</th>
                     <th style="text-align: left">Action</th>
@@ -121,9 +122,10 @@
                         <td style="text-align: left">{{ $loop->index + 1 }}</td>
                         <td>{{ $key->name }}</td>
                         <td>{{ $key->aName }}</td>
-                        <td>{{ $key->desc }}</td>
-                        <td>{{ $key->aDesc }}</td>
+                        <td>{{ $key->det }}</td>
+                        <td>{{ $key->aDet }}</td>
                         <td>{{ $key->place }}</td>
+                        <td>{{ $key->aplace }}</td>
                         <td>{{ $key->event_date }}</td>
                         <td>{{ $key->status==1?'Active':'Passive'}}</td>
                         <td>
